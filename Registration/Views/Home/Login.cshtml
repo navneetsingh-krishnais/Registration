@@ -1,0 +1,47 @@
+﻿@model Registration.Models.tblRegistration
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+@using (Html.BeginForm("Login", "Home", FormMethod.Post))
+{
+    <fieldset>
+        <legend>Demo for User journey</legend>
+
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        @if (ViewBag.Message != null)
+        {
+            <p style="border: 1px solid red">
+                @ViewBag.Message
+            </p>
+        }
+
+        <table>
+            <tr>
+                <td>@Html.LabelFor(a => a.UserName)</td>
+                <td>@Html.TextBoxFor(a => a.UserName)</td>
+                <td>@Html.ValidationMessageFor(a => a.UserName)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(a => a.Password)</td>
+                <td>@Html.PasswordFor(a => a.Password)</td>
+                <td>@Html.ValidationMessageFor(a => a.Password)</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Login" />
+                    @Html.ActionLink("Forgot Password", "ForgotPassword", "Home")
+                    @Html.ActionLink("Register", "Index", "Home")
+                </td>
+                <td></td>
+            </tr>
+        </table>
+    </fieldset>
+}
+

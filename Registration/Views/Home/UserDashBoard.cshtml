@@ -1,0 +1,16 @@
+﻿@model Registration.Models.tblRegistration
+
+@{
+    ViewBag.Title = "UserDashBoard";
+}
+
+<h2>UserDashBoard</h2>
+
+<fieldset>
+    <legend>User Dashboard</legend>
+
+    @if (Session["UserName"] != null)
+    {
+        <text>Welcome @Session["UserName"].ToString()</text>
+    }
+</fieldset>
